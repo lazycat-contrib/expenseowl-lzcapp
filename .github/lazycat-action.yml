@@ -19,7 +19,6 @@ images:
     target: service
     service: expenseowl
     source: tanq16/expenseowl
-    channel: stable
     sort: semver
     tag_regex: ^v?[0-9]+[.][0-9]+$
     delivery:
