@@ -1,0 +1,18 @@
+package: community.lazycat.app.expenseowl
+name: ExpenseOwl
+version: 0.0.0
+description: "Minimal expense tracker with budgets, categories and charts, stored as plain JSON."
+min_os_version: "1.5.0"
+homepage: https://github.com/Tanq16/ExpenseOwl
+author: Tanq16
+license: MIT
+permissions:
+  required:
+    - net.internet
+locales:
+  zh:
+    name: ExpenseOwl
+    description: "极简记账：记支出和收入、按分类统计、设月度预算，带图表和 PWA 支持，数据存成 JSON 文件。"
+  en:
+    name: ExpenseOwl
+    description: "Minimal expense tracker with budgets, categories and charts, stored as plain JSON."

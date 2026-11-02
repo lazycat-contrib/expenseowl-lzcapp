@@ -1,0 +1,35 @@
+application:
+  subdomain: expenseowl
+  multi_instance: false
+  upstreams:
+    - location: /package-licenses/
+      backend: file:///lzcapp/pkg/content/licenses/
+    - location: /
+      backend: http://expenseowl:8080/
+
+services:
+  expenseowl:
+    # upstream: tanq16/expenseowl:v4.1
+    image: docker.1ms.run/tanq16/expenseowl:v4.1
+    environment:
+      - TZ=Asia/Shanghai
+    binds:
+      - /lzcapp/var/data:/app/data
+
+usage: |
+  ExpenseOwl 是极简记账工具：记支出和收入、按分类统计、设月度预算，带图表。
+
+  使用方法：
+  1. 打开应用直接用（本应用没有独立的账号密码，靠懒猫入口鉴权保护）。
+  2. 首页记一笔：金额、分类、备注。收入勾"Report as gain"。
+  3. 在设置页可以改分类、设预算、切换主题、导入导出数据。
+
+  数据与安全：
+  - 数据以 JSON 文件保存在 /lzcapp/var/data，卸载应用会一并删除，请定期备份。
+  - 本应用**没有内置账号体系**，访问控制完全依赖懒猫入口鉴权，请勿关闭入口鉴权或把地址公开分享。
+  - 应用内提供数据导入导出，可以手动备份成文件。
+
+  说明：
+  - 单容器部署，默认 JSON 后端（不用数据库）。
+  - 支持 PWA，可以加到手机主屏幕当原生应用用。
+  - 未做真机验证：记账、分类统计、预算提醒、导入导出以及重启后持久化均未在设备上实测。
